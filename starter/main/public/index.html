@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fable Presentation</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body { margin: 0; padding: 20px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+        .slide { display: none; max-width: 800px; margin: 0 auto; }
+        .slide.active { display: block; }
+        .slide h1 { color: #333; border-bottom: 2px solid #007acc; padding-bottom: 10px; }
+        .slide p { line-height: 1.6; color: #555; }
+        .slide ul { line-height: 1.8; }
+        .slide code { background: #f4f4f4; padding: 2px 4px; border-radius: 3px; }
+        .slide pre { background: #f8f8f8; padding: 15px; border-radius: 5px; overflow-x: auto; }
+        .controls { text-align: center; margin: 20px 0; }
+        .controls button { margin: 0 10px; padding: 10px 20px; background: #007acc; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        .controls button:hover { background: #005a9e; }
+        .slide-counter { text-align: center; color: #666; margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <div class="controls">
+        <button onclick="previousSlide()">← Previous</button>
+        <button onclick="nextSlide()">Next →</button>
+        <button onclick="toggleFullscreen()">Fullscreen</button>
+    </div>
+    <div class="slide-counter">
+        <span id="current-slide">1</span> / <span id="total-slides">11</span>
+    </div>
+    <div id="slides">
+        <div class="slide active" id="slide-1"><h1>*The Unknown:* <br> Unveiling the Wonders <br> of the Universe</h1></div><div class="slide" id="slide-2">
+                    <h1>A Journey Through the Cosmos</h1>
+                    <div>- In the _vastness of space_, time and distance are but mere illusions
+    - Worlds exist beyond our wildest imaginations
+        - On these worlds, _beings of all shapes and sizes_ dwell
+- With societies and cultures _as diverse as the stars_ that light up the skies above
+- They are **united** in their quest for knowledge and understanding
+- The universe itself is our teacher, and its secrets our endless source of inspiration
+</div>
+                </div><div class="slide" id="slide-3">
+                    <h1>In the Vastness of Space, Time and Distance Are but Mere Illusions</h1>
+                    <div>Amidst the lush forests and shimmering lakes, ancient beings of immense power and wisdom dwell, watching over the affairs of mortals with a watchful eye.,With societies and cultures as diverse as the stars that light up the skies above. On these worlds, beings of all shapes and sizes dwell.,The universe itself is our teacher, and its secrets our endless source of inspiration</div>
+                </div><div class="slide" id="slide-4">
+                    <h1>The Verdant Lands</h1>
+                    <div>**Amidst the lush forests and shimmering lakes**, ancient beings of immense power and wisdom dwell, watching over the affairs of mortals with a watchful eye.
+![image](small-placeholder.svg)
+</div>
+                </div><div class="slide" id="slide-5">
+                    <h1>Phoenix</h1>
+                    <div></div>
+                </div><div class="slide" id="slide-6">
+                    <h1>Time and Space</h1>
+                    <div>The human mind, too, is a wonder of the universe, capable of unlocking the secrets of existence and pushing the boundaries of what we know to be true. Through science and philosophy, we seek to understand the nature of reality. <br>
+
+But as we delve deeper into the unknown, we come to realize that the universe is not always as it seems. Time and space warp and twist, and the very fabric of reality is subject to change. And as we grapple with the implications of our discoveries, we are forced to confront the fundamental questions of our existence.
+</div>
+                </div><div class="slide" id="slide-7">
+                    <h1>Untitled</h1>
+                    <div></div>
+                </div><div class="slide" id="slide-8">
+                    <h1>The System</h1>
+                    <div>The console flickers to life as he approaches, the `lines of code` transforming into a stream of data that flows across the screen. He studies the data, his eyes scanning over the numbers and symbols with practiced ease.
+
+```js
+function processSensorData(sensorData) {
+  if (implant.isActive() && sensorData.value > implant.getThreshold()) {
+    implant.triggerAlert();
+  }
+}
+```
+</div>
+                </div><div class="slide" id="slide-9">
+                    <h1>Mr. Whiskers</h1>
+                    <div>He sat atop the garden wall, his fur ruffled by the autumn breeze. <br>
+
+He watched as the leaves danced in the wind, their vibrant colors a symphony of beauty.
+</div>
+                </div><div class="slide" id="slide-10">
+                    <h1>Mr. Whiskers</h1>
+                    <div>He sat atop the garden wall, his fur ruffled by the autumn breeze. <br>
+
+He watched as the leaves danced in the wind, their vibrant colors a symphony of beauty.
+</div>
+                </div><div class="slide" id="slide-11"><h1>_Thank you!_</h1></div>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 11;
+
+        function showSlide(n) {
+            const slides = document.querySelectorAll('.slide');
+            slides.forEach(slide => slide.classList.remove('active'));
+            
+            const currentSlideElement = document.getElementById('slide-' + n);
+            if (currentSlideElement) {
+                currentSlideElement.classList.add('active');
+            }
+            
+            document.getElementById('current-slide').textContent = n;
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides) {
+                currentSlide++;
+                showSlide(currentSlide);
+            }
+        }
+
+        function previousSlide() {
+            if (currentSlide > 1) {
+                currentSlide--;
+                showSlide(currentSlide);
+            }
+        }
+
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen();
+            } else {
+                document.exitFullscreen();
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                previousSlide();
+            } else if (e.key === 'f' || e.key === 'F') {
+                toggleFullscreen();
+            }
+        });
+
+        // Initialize
+        showSlide(1);
+    </script>
+</body>
+</html>

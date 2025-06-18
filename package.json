@@ -12,7 +12,10 @@
     "preview": "vite preview",
     "fmt": "prettier --write --ignore-path ./.gitignore  .",
     "fmt:check": "prettier --check --ignore-path ./.gitignore . ",
-    "tsc": "tsc"
+    "tsc": "tsc",
+    "deploy:vercel": "vercel",
+    "deploy:netlify": "netlify deploy --prod",
+    "setup": "cd starter/main && npm install && npm run generate:css"
   },
   "dependencies": {
     "@vitejs/plugin-react": "^3.1.0",
